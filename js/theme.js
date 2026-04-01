@@ -1,4 +1,4 @@
-// theme.js — Dark/light toggle with localStorage persistence
+// theme.js — Dark/light toggle with localStorage persistence + scroll header shadow
 
 (function () {
   const STORAGE_KEY = 've5nn-theme';
@@ -40,4 +40,18 @@
   // Update copyright year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Scroll-based header shadow
+  const header = document.querySelector('header[role="banner"]');
+  if (header) {
+    function updateHeaderScroll() {
+      if (window.scrollY > 8) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+    updateHeaderScroll();
+    window.addEventListener('scroll', updateHeaderScroll, { passive: true });
+  }
 })();

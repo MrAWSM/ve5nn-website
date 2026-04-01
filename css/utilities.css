@@ -13,17 +13,6 @@
   border: 0;
 }
 
-/* Frequency / callsign monospace */
-.freq, .callsign {
-  font-family: var(--font-mono);
-  font-weight: 500;
-  font-size: 0.9375rem;
-  background: var(--color-mono-bg);
-  padding: 0.125rem 0.375rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border);
-}
-
 /* Text helpers */
 .text-secondary { color: var(--color-text-secondary); }
 .text-accent    { color: var(--color-accent); }

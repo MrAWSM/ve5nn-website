@@ -3,28 +3,42 @@
 /* ── Info Card ── */
 .card {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border: none;
+  border-radius: var(--radius-lg);
   padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
   transition: box-shadow var(--transition), transform var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
 .card:hover {
   box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 
-.card-icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  color: var(--color-accent);
+/* Teal circle behind icon */
+.card-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
   margin-bottom: var(--space-md);
 }
 
+.card-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--color-accent);
+}
+
 .card-title {
+  font-family: var(--font-heading);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: var(--space-sm);
   color: var(--color-text-primary);
 }
@@ -40,7 +54,7 @@
   margin-top: var(--space-sm);
   color: var(--color-accent);
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: color var(--transition);
 }
 .card-link:hover { color: var(--color-accent-hover); text-decoration: underline; }
@@ -49,8 +63,7 @@
 .table-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
 }
 
@@ -62,18 +75,15 @@
 }
 
 .data-table thead {
-  background: var(--color-mono-bg);
+  background: var(--color-accent);
 }
 
 .data-table th {
   text-align: left;
   padding: 0.75rem 1rem;
-  border-bottom: 2px solid var(--color-accent);
   font-weight: 600;
-  font-size: 0.8125rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  color: #ffffff;
   white-space: nowrap;
 }
 
@@ -83,20 +93,24 @@
   color: var(--color-text-primary);
 }
 
+.data-table tbody tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--color-accent) 4%, transparent);
+}
+
 .data-table tbody tr:last-child td {
   border-bottom: none;
 }
 
 .data-table tbody tr:hover {
-  background-color: color-mix(in srgb, var(--color-accent) 4%, transparent);
+  background-color: color-mix(in srgb, var(--color-accent) 8%, transparent);
 }
 
 /* ── Alert Banner ── */
 .alert {
   padding: 0.75rem 1rem;
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--color-accent-secondary);
+  border-radius: var(--radius-md);
   background-color: color-mix(in srgb, var(--color-accent-secondary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent-secondary) 30%, transparent);
   font-size: 0.875rem;
   color: var(--color-text-primary);
   margin-bottom: var(--space-lg);
@@ -105,27 +119,40 @@
 .alert strong { font-weight: 600; }
 
 .alert-info {
-  border-left-color: var(--color-accent);
   background-color: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  border-color: color-mix(in srgb, var(--color-accent) 25%, transparent);
 }
 
-/* ── Link Card (Links page) ── */
+/* ── Frequency pill ── */
+.freq, .callsign {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.875rem;
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  color: var(--color-accent);
+  padding: 0.1rem 0.5rem;
+  border-radius: var(--radius-pill);
+}
+
+/* ── Link Category (Links page) ── */
 .link-category {
   margin-bottom: var(--space-xl);
 }
 
 .link-category-title {
+  font-family: var(--font-heading);
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: var(--space-md);
   padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 2px solid var(--color-border);
   color: var(--color-text-primary);
 }
 
 .link-list {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-sm);
 }
 
@@ -134,15 +161,14 @@
   align-items: flex-start;
   gap: var(--space-sm);
   padding: var(--space-sm) var(--space-md);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  transition: border-color var(--transition), box-shadow var(--transition);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-md);
+  transition: background-color var(--transition);
 }
 
 .link-item:hover {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-sm);
+  background-color: color-mix(in srgb, var(--color-accent) 8%, transparent);
 }
 
 .link-item a {
@@ -174,41 +200,55 @@
 }
 
 .gallery-tile {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
   cursor: pointer;
   transition: transform var(--transition), box-shadow var(--transition);
+  position: relative;
 }
 
 .gallery-tile:hover {
   transform: scale(1.02);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
 }
 
 .gallery-tile-img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  background: var(--color-mono-bg);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 20%, var(--color-bg)) 0%, color-mix(in srgb, var(--color-accent) 10%, var(--color-bg)) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text-secondary);
+  color: var(--color-accent);
   font-size: 0.875rem;
 }
 
+/* Caption overlay on hover */
 .gallery-tile-caption {
-  padding: var(--space-sm) var(--space-md);
-  font-size: 0.8125rem;
-  color: var(--color-text-secondary);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-md);
+  background: linear-gradient(to top, rgba(7, 26, 25, 0.85) 0%, transparent 100%);
+  color: #fff;
+  transform: translateY(4px);
+  opacity: 0;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.gallery-tile:hover .gallery-tile-caption {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .gallery-tile-caption strong {
-  color: var(--color-text-primary);
+  color: #ffffff;
   display: block;
   font-size: 0.875rem;
+  font-family: var(--font-heading);
 }
 
 /* ── Gallery Lightbox ── */
@@ -216,7 +256,7 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   z-index: 300;
   align-items: center;
   justify-content: center;
@@ -235,7 +275,7 @@
 
 .lightbox-img {
   width: 100%;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
 }
 
 .lightbox-close {
@@ -260,16 +300,21 @@
 .announcement-item {
   padding: var(--space-md) var(--space-lg);
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  border-left: 4px solid var(--color-accent);
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 }
 
 .announcement-date {
-  font-size: 0.8125rem;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-xs);
+  display: inline-block;
+  font-size: 0.75rem;
   font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  padding: 0.15rem 0.6rem;
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-sm);
 }
 
 .announcement-text {
@@ -282,8 +327,9 @@
   text-align: center;
   padding: var(--space-2xl);
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
 }
 
 .cw-stub-title {
@@ -317,6 +363,10 @@
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .link-list {
+    grid-template-columns: 1fr;
   }
 }
 
