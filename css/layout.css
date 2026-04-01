@@ -52,7 +52,7 @@ header[role="banner"] {
 
 header[role="banner"].scrolled {
   border-bottom-color: var(--color-border);
-  box-shadow: 0 2px 16px rgba(13, 148, 136, 0.08);
+  box-shadow: 0 2px 16px rgba(198, 93, 93, 0.08);
 }
 
 header[role="banner"] .container {
@@ -265,7 +265,7 @@ main[role="main"] {
 
 /* ── Footer ── */
 footer[role="contentinfo"] {
-  background: linear-gradient(135deg, #0A2120 0%, #0D2B2A 60%, #071A19 100%);
+  background: linear-gradient(135deg, #1A1520 0%, #2A1A20 60%, #1A1018 100%);
   border-top: none;
   padding: var(--space-2xl) 0;
   color: rgba(255, 255, 255, 0.7);
@@ -306,7 +306,7 @@ footer a:hover { color: var(--color-accent-hover); }
 /* ── Hero ── */
 .hero {
   position: relative;
-  background: linear-gradient(135deg, #0D9488 0%, #0F766E 40%, #134E4A 100%);
+  background: linear-gradient(135deg, #1D1D2E 0%, #8B2D2D 40%, #C65D5D 100%);
   padding: 5rem var(--space-xl) 7rem;
   margin-bottom: 0;
   text-align: center;
@@ -397,18 +397,18 @@ footer a:hover { color: var(--color-accent-hover); }
   gap: var(--space-sm);
   padding: 0.625rem 1.5rem;
   background: var(--color-accent-secondary);
-  color: #0D2B2A;
+  color: #FFFFFF;
   border-radius: var(--radius-pill);
   font-weight: 600;
   font-size: 0.9375rem;
   transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
-  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+  box-shadow: 0 2px 8px rgba(24, 99, 220, 0.3);
 }
 .quick-link-btn:hover {
   background: var(--color-accent-secondary-hover);
-  color: #0D2B2A;
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 4px 16px rgba(24, 99, 220, 0.3);
 }
 
 /* ── Responsive ── */
